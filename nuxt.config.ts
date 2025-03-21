@@ -1,12 +1,25 @@
-import { defineNuxtConfig } from 'nuxt/config'
-
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-11-01',
-  devtools: { enabled: false },
+  modules: ['@pinia/nuxt', '@nuxt/ui'],
+  css: ['~/assets/scss/main.scss'],
+
   typescript: {
     strict: true,
+    tsConfig: {
+      compilerOptions: {
+        paths: {
+          "~/*": ["./*"]
+        }
+      }
+    }
   },
-  css: ['~/assets/scss/main.scss'],
-  modules: ['@pinia/nuxt'],
-})
+
+  nitro: {
+    preset: 'node-server'
+  },
+
+  devtools: {
+    enabled: false
+  },
+
+  compatibilityDate: '2025-03-20'
+});
